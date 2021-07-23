@@ -14,6 +14,11 @@ const app = express();
 //setup view engine
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname , "views"));
+// capture form data
+app.use(express.urlencoded({extended: false}));
+//setup static directory
+app.use(express.static(path.join(__dirname,"public")));
+ 
 
 // routing middlewares
 // here below instead of handleing all the routing middleware in app.js , will create index.js file in the routes fdirectory to handle all the requersts coming on "/" path and second argument it accept as the relative path of the file, where the routing middleware of the particualr path present.

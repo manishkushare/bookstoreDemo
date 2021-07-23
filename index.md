@@ -58,3 +58,27 @@ Instead, will create a directory named , "routes" inside our root directory , an
 <!-- Create book
     focusing on how to create a book
  -->
+# Adding book from application is 2 way process
+    -Render  a form where user can fill book information 
+    -Capture form data and save details into database
+# According to routing convention 
+    - for rendering book create  form => GET on "/books/new"
+    - for capturing data and saving to DB => POST on "/books"
+
+1. When creating book we need first to have .get route to provide clinet form and then we can use .post method to capture the form data.
+
+2. in order to capture form data, we need to use in-built express property named, express.urlencoded() to captuure the data into req.body in the parsed format
+Also, at the same time, in that partcular file from route directory where we are adding routes and writing logic to store data into database. for that we need to import Book model, which we created inside model directiory,
+so will import it using require()
+now, this model work at collection level in the mongoose , as same as collection level in mongodb
+Using that model, will do create operation
+
+kindly refer
+routes/books.js for this and app.js in which we only added one line for this section is express.urlencoded to capture the form data inro parsed format into req.url 
+
+# flow
+1. whenever any request comes on route /books, app.js has middleware , which will direct us to file books.js inside the route directory
+2. inside route directory we need to handle multiple different requests on /books route
+
+
+

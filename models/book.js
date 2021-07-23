@@ -11,9 +11,9 @@ const bookSchema = new Schema({
     },
     description : String,
     price : Number,
-    author = String
+    author : String
 },{timestamps : true});
 
-const Book = mongoose.model('Book'.bookSchema);
+const Book = mongoose.model('Book',bookSchema);
 
 module.exports = Book;

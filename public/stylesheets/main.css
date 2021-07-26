@@ -72,11 +72,16 @@ table {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 100vh;
 }
 
 .header h1 {
   font-weight: 800;
   font-size: 20px;
+}
+
+.book {
+  padding: 2rem;
+  margin: 2rem 0;
+  border: 2px solid black;
 }
 /*# sourceMappingURL=main.css.map */

@@ -2,8 +2,13 @@ const express = require('express');
 const Book = require('../models/book');
 const router = express.Router();
 
-router.get('/',(req,res)=> {
-    res.render('books');
+router.get('/',(req,res,next)=> {
+
+    Book.find({},(err,books) => {
+        console.log(err,books);
+        if(err) return next(err);
+        res.render('books', {books : books});
+    })
 });
 
 router.get('/new',(req,res)=> {
@@ -18,9 +23,19 @@ router.post('/',(req,res,next)=> {
         if(err){
            return  next(err);
         }
-        console.log(createdBook);
+        // response
+        res.redirect('/books')
+        
     })
-    // response
+});
+
+router.get('/:id',(req,res,next)=> {
+    
+    const id = req.params.id;
+    Book.findById(id,(err,book)=> {
+        if(err) return next(err);
+        res.render('book', {book:book})
+    })
 })
 
 

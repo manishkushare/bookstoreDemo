@@ -31,7 +31,7 @@ app.use((req,res,next)=> {
     res.send('Page not found');
 });
 app.use((err,req,res,next)=> {
-    re.send(err);
+    res.send(err);
 })
 
 // listen to set the port

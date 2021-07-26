@@ -2,10 +2,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    // height: 100vh;
     h1 {
         font-weight: 800;
         font-size: 20px;
     }
     
+}
+
+.book{
+    padding: 2rem;
+    margin: 2rem 0;
+    border: 2px solid black;
+    // background-color: aqua;
 }

@@ -15,5 +15,22 @@
             <a href="/books/new"><button>Add book</button></a>
         </div>
     </header>
+    <main>
+        <div >
+            <% books.forEach(book => { %>
+                <div class="book">
+                    <h1><%= book.title %></h1>
+                    <h2><%= book.author %></h2>
+                    <p><%= book.description %></p>
+                    <span><%= book.price %></span>
+                    <a href="/books/<%= book._id %>">
+                        <button>Show Me</button>
+                    </a>
+                </div>
+                
+            <% }) %>
+            
+        </div>
+    </main>
 </body>
 </html>

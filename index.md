@@ -80,10 +80,17 @@ routes/books.js for this and app.js in which we only added one line for this sec
 1. whenever any request comes on route /books, app.js has middleware , which will direct us to file books.js inside the route directory
 2. inside route directory we need to handle multiple different requests on /books route
 
-
-
 <!-- read book
-    focusing on how to create a book
+focus is on how to read book
  -->
-
+It's simple, we need to use find or findById method
+<!-- update book
+    focusing on how to update a book
+ -->
+# Updating a book is again two step process,
+    1. Render a form where user can view existing book data
+    2. Capture form data and update book details into database
+# According to routing convention
+    1. for rendering book update form => GET request on '/books/:id/edit';
+    2. for capturing updated data and savinbg to DB => POST on '/books/:id';
 

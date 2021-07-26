@@ -38,6 +38,22 @@ router.get('/:id',(req,res,next)=> {
     })
 })
 
+router.get('/:id/edit',(req,res)=> {
+    const id = req.params.id
+    Book.findById(id,(err,book)=> {
+        if(err) return next(err);
+        res.render('editBookform',{book:book});
+    })
+})
+
+router.post('/:id',(req,res)=> {
+    const id = req.params.id;
+    Book.findByIdAndUpdate(id, req.body , {new :true}, (err,book)=> {
+        if(err) return next(err);
+        res.render('book',{book: book});
+    })
+})
+
 
 
 module.exports = router;

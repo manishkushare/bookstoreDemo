@@ -25,6 +25,7 @@ app.use(express.static(path.join(__dirname,"public")));
 // whenver , the request meatches the path, it wil look for the particular file which is given inthe required in form of relative path
 app.use('/', require('./routes/index'));
 app.use('/books', require('./routes/books'));
+app.use('/comments',require('./routes/comments'));
 
 // error handleing middleware
 app.use((req,res,next)=> {

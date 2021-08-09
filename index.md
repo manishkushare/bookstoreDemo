@@ -94,3 +94,47 @@ It's simple, we need to use find or findById method
     1. for rendering book update form => GET request on '/books/:id/edit';
     2. for capturing updated data and savinbg to DB => POST on '/books/:id';
 
+<!-- delete book
+    focusing on how to delete a book
+ -->
+
+For deleting book , we can use findOneAndDelete or findByIdAndDelete
+
+# According to routing convention
+    - for deleting book - DELETE on '/books/:bookId'
+
+    since html pages do not support DELETE http method, from html page, we can use GET on 'books/:id/delete
+
+<!-- adding cooment section -->
+# creating comment schema
+here we will use reference association as we want to do crud operation on comments, and in reference assocaiation, each comment will referred to a book and each comment will have it;s unique id, so it wil be very much easy to handle all the comments as in update, delete the comments by using their id's.
+
+what's the cath here, we need to create another schema file in model directory as usual, also we need to add one more feild in the comment schema as "bookId" which will containes type and ref field, in "ref:"  field, we simply need to add the reference name that is schema name of the schema file , which we wnat to associate with it. for more clearity check the coment.js file in the model directory for points.
+
+Now once, we made the schema for the comments , now it is time to create a comment
+
+# creating a comment 
+
+Remember, comments are the dependent resources on the books. Each comment created is a part of the book so we need to access the bookid while creating a comment
+
+1. creating a comment => POST request on "/books/:bookId/comments" from html form
+The routing will be handled from inside the books router as it included "/books" in it
+
+# Listing Comments
+comments will be listed for specific book on the specific book details page
+1. list comments - GET request on => '/books/:bookId/comments'
+This routing will also be handled inside book router as it is included '/books' in it
+
+
+# Populate
+1. Populate is the method of cross-referencing the collection, In our case, when we need to fetch the single book details , we need to make one request to database to fetch the book detials and to fetch the comments of the same books , which is it's related document, we again requires to fetch the details of the comments with another seperate request for fetching the comments.
+
+So by cross referencing the books collection and comment collections, with th ehelp of populate method, we will be able to fetch books and comments in a single router
+for practical exposure refer "/models/comments.js" and see how we reference all the comments of that particular book inside an array , by passing ObjectId of each comments inside array 
+
+so, now each comment collection wil have reference to the that particular book using it's id and book collection will have reference to all the comments of that book inside an array storing their id's
+
+for practical exposure check schema files of book.js and comment.js where both collections are cross-referneced
+
+2. Now after that, whenever we will create a comment , we need to grab the comment id and update the book collections by appending comment id inside the array of comments inside book collection, by that we will actually be done with cross-referencing process.
+

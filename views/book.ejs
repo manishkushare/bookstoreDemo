@@ -12,5 +12,26 @@
     <h2><%= book.author %></h2>
     <p><%= book.description %></p>
     <a href="/books/<%= book.id %>/edit">Edit</a>
+    <a href="/books/<%= book.id%>/delete">Delete</a>
+    <div style="padding: 2rem; border: 2px solid black; margin :2rem 0">
+        <form action="/books/<%= book.id%>/comments" method="POST">
+            Comments:
+            <textarea name="content" id="" cols="30" rows="10"></textarea>
+            <div>
+                <input type="submit" value="Submit">
+            </div>
+        </form>
+        
+    </div>
+    <div style="padding: 2rem; border: 2px solid red; margin :2rem 0">
+        <h2>Comments</h2>
+        <% book.comments.forEach(comment => { %>
+         <div style="padding: 2rem; margin: 2rem 0; background: rosybrown;">
+            <p><%= comment.content %></p>
+            <a href="/comments/<%= comment.id%>/edit">Edit</a>
+            <a href="/comments/<%= comment.id%>/delete" style="padding-left: 2rem;">Delete</a>
+         </div>
+        <% }) %>
+    </div>
 </body>
 </html>

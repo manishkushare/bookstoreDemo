@@ -11,7 +11,14 @@ const bookSchema = new Schema({
     },
     description : String,
     price : Number,
-    author : String
+    author : String,
+    // cross-referencing by storing ObjectId of comments
+    
+    comments : [{
+        type: Schema.Types.ObjectId,
+        ref: "Comment"
+    }] 
+
 },{timestamps : true});
 
 const Book = mongoose.model('Book',bookSchema);
